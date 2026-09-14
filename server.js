@@ -4,13 +4,15 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve all static build files (JS, CSS, images) with long-term caching
-// for hashed asset filenames.
+// Serve all static build files (JS, CSS, images). Short-lived caching only:
+// the original Vite build relied on content-hashed filenames to make long-term
+// immutable caching safe, but this repo may get hand-edited in place (e.g.
+// translations) without the filename changing, so we can't promise immutability.
 app.use(
   express.static(path.join(__dirname), {
     setHeaders: (res, filePath) => {
       if (filePath.includes(`${path.sep}assets${path.sep}`)) {
-        res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        res.setHeader("Cache-Control", "public, max-age=3600");
       }
     },
   })
