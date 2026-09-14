@@ -12,7 +12,7 @@ app.use(
   express.static(path.join(__dirname), {
     setHeaders: (res, filePath) => {
       if (filePath.includes(`${path.sep}assets${path.sep}`)) {
-        res.setHeader("Cache-Control", "public, max-age=3600");
+        res.setHeader("Cache-Control", "no-cache");
       }
     },
   })
