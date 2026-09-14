@@ -1,0 +1,15 @@
+{
+  "name": "calistenia-mujer-asiatica",
+  "version": "1.0.0",
+  "description": "Clon identico del quiz funnel Programa de Calistenia Asiatica para Mulheres",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
